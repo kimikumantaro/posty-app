@@ -22,7 +22,7 @@ class RegisterController extends Controller
             'password' => 'required|confirmed ', // validation rules (it will look for _confirmation in the blade template)
         ]); // validate method(validate the request), throw exception if cannot validate
         
-        // dd('store');
+        dd('store');
         // dd($request);
         // store user
         // sign the user in
