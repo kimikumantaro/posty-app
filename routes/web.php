@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -22,6 +25,8 @@ Route::get('/', function(){
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts');
+
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout'); // post method for register button, name will inherit from top
 
 Route::get('/login', [LoginController::class, 'index'])->name('login'); // chaining the name method to register
@@ -30,6 +35,10 @@ Route::post('/login', [LoginController::class, 'store']); // post method for reg
 Route::get('/register', [RegisterController::class, 'index'])->name('register'); // chaining the name method to register
 Route::post('/register', [RegisterController::class, 'store']); // post method for register button, name will inherit from top
 
-Route::get('/posts', function () {
-    return view('posts.index');
-})->name('posts');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::post('/posts', [PostController::class, 'store']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
+Route::delete('/posts/{post}/unlike', [PostLikeController::class, 'destroy'])->name('posts.unlike');

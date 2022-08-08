@@ -35,10 +35,18 @@
                         </div>
                     @enderror
                 </div>
+
+                <div class="mb-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" name="remember" id="remember" class="mr-2">
+                        <label for="remember">Remember Me</label>
+                    </div>
+                </div>
                 
                 <div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Login</button>
                 </div>
+
             </form>
         </div>
     </div>

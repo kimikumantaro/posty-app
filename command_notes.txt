@@ -1,0 +1,8 @@
+php artisan make:model Post --help 
+php artisan make:model Post -m -f 
+-m for creating migration
+-f for creating factory
+
+guide on using factory (to create fake data)
+App\Models\Post::factory()->times(200)->create(['user_id' => 3]);
+create 200 row using model Post on user_id = 3

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['guest']); //before routes lalu middleware dulu check whether user dah sign in or not
+    }
+
     public function index()
     {
         return view('auth.register');
