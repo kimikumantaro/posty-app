@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['auth'])->only('store', 'destroy'); //allow auth to store and destroy only
+    }
+
     public function index()
     {
         // $posts = Post::get(); // return all post in natural db order (Laravel Collection Library)
